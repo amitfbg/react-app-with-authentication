@@ -4,7 +4,10 @@
 
 const Joi = require("@hapi/joi");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = require("../modal/user");
+const dotenv = require("dotenv");
+dotenv.config();
 
 //Validation using Joi
 const validateUser = Joi.object({
@@ -31,5 +34,7 @@ exports.userLogin = async (req, res) => {
   if (!validPassword)
     return res.status(400).json({ msg: "Email or password not found" });
 
-  res.send("found");
+  // Creating and sending token to user
+  const token = jwt.sign({ id: userExist.id }, process.env.SECRET_TOKEN);
+  return res.status(200).json({ email: userExist.email, "auth-token": token });
 };
