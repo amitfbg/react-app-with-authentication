@@ -1,12 +1,16 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const url = require("./config/db-config");
 
-//Middleware
-app.use(express.json());
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
 
-//Databse Connectiong
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//Database Connection
 mongoose
   .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -18,10 +22,14 @@ mongoose
     process.exit();
   });
 
-app.use("/", (req, res) => {
-  res.send("Hello");
-});
+//Middleware
+app.use(express.json());
 
-app.listen(3000, () => {
-  console.log("Server Running");
+//Importing Routes
+const registerRoute = require("./routes/register");
+
+app.use("/register", registerRoute);
+
+app.listen(4000, () => {
+  console.log("Server Running on 4000");
 });
