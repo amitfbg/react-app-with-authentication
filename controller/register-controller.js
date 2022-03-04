@@ -4,6 +4,7 @@
 
 const mongoose = require("mongoose");
 const Joi = require("@hapi/joi");
+const bcrypt = require("bcrypt");
 const User = require("../modal/user");
 
 //Validation using Joi
@@ -19,20 +20,30 @@ exports.create = async (req, res) => {
   const { error } = validateUser.validate(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
+  //Checking if user already exits
   const emailExist = await User.findOne({ email: req.body.email });
   if (emailExist) return res.status(400).json({ msg: "Email already exists" });
 
+  // Password hashing
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+  // creating user
   const newUser = new User({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
+    password: hashedPassword,
   });
+
   try {
     const savedUser = await newUser.save();
     res.status(201).json({
       message: "User registered successfully.......",
-      createdUser: savedUser,
+      createdUser: {
+        id: savedUser._id,
+        name: savedUser.name,
+        email: savedUser.email,
+      },
     });
   } catch (err) {
     res.status(500).json({ error: err });
