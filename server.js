@@ -27,8 +27,10 @@ app.use(express.json());
 
 //Importing Routes
 const registerRoute = require("./routes/register");
+const loginRoute = require("./routes/login");
 
 app.use("/register", registerRoute);
+app.use("/login", loginRoute);
 
 app.listen(4000, () => {
   console.log("Server Running on 4000");
