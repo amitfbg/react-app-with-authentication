@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Loading from "../Loading/index";
+import authService from "../auth/auth";
 
 const MainContainer = styled.div`
   display: flex;
@@ -115,12 +116,12 @@ function Login({ handleClick }) {
       setIsLoading(true);
       const response = await axios.post("/login", dataToPost);
       if (response.status === 200) {
-        setBannerMsg(response.data.msg);
+        authService.startSession(response.data);
         setEmail("");
         setPassword("");
       }
     } catch (error) {
-      setBannerMsg("Please fill all the details...");
+      setBannerMsg(error?.response?.data?.error);
     } finally {
       setIsLoading(false);
     }
