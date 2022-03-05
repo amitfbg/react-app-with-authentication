@@ -75,14 +75,14 @@ const Label = styled.div`
   padding: 0 1rem 0.5rem;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #ffffff;
+  color: #000;
 `;
 const BannerMessage = styled.div`
   padding: 0.5rem 1rem;
   color: red;
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  height: 3rem;
 `;
 
 const LoadingContainer = styled.div`
@@ -91,7 +91,7 @@ const LoadingContainer = styled.div`
 `;
 
 const LinkForSignup = styled.div`
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   text-align: center;
 `;
 
@@ -106,6 +106,22 @@ function Register({ handleClick }) {
   const [password, setPassword] = useState("");
   const [bannerMsg, setBannerMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const validateForm = () => {
+    if (!(name && email && password)) {
+      setBannerMsg("Please fill all the details...");
+      return false;
+    }
+    if (name.length < 6) {
+      setBannerMsg("Name is less than 6 character");
+      return false;
+    }
+    if (password.length < 6) {
+      setBannerMsg("Password is less than 6 character");
+      return false;
+    }
+    return true;
+  };
 
   const handleSubmit = async () => {
     try {
@@ -171,7 +187,7 @@ function Register({ handleClick }) {
           />
         </Wrap>
       </InputContainer>
-      <ButtonContainer onClick={handleSubmit}>
+      <ButtonContainer onClick={() => validateForm() && handleSubmit()}>
         <StyledButton disabled={isLoading}>Sign Up</StyledButton>
         {isLoading && (
           <LoadingContainer>

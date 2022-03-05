@@ -59,7 +59,6 @@ const Wrap = styled.div`
 `;
 const Icon = styled.div`
   font-size: 2rem;
-  margin-bottom: 1rem;
 `;
 
 const WrapRegister = styled.div`

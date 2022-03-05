@@ -45,7 +45,6 @@ function User() {
       };
       const response = await axios.get("/user", dataToPost);
       if (response.status === 200) {
-        console.log(response);
         setUserData(response?.data?.userInfo);
       }
       setIsLoading(1);
