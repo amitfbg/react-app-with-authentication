@@ -3,64 +3,25 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  height: 100%;
+  height: 3rem;
   align-items: center;
   justify-content: space-between;
-`;
-const ContainerLeft = styled.div``;
-const ContainerRight = styled.div``;
-const MenuContainer = styled.div``;
-const Menu = styled.a`
-  font-size: 1rem;
-  font-weight: bold;
   color: #ffffff;
-  padding: 0.5rem 0.75rem;
-  text-decoration: none;
-  &:hover {
-    color: #1a1a1d;
-  }
 `;
-const StyledIcon = styled.div`
-  height: 4rem;
-  width: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  svg {
-    width: 3.8rem;
-    height: 3.8rem;
-  }
+const ContainerLeft = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
 `;
-
-const menuOptions = [
-  { id: "Home", label: "Home", href: "#home" },
-  { id: "About", label: "About Me", href: "#about" },
-  { id: "Resume", label: "Resume", href: "#resume" },
-  { id: "Contact", label: "Contact Me", href: "#contact" },
-];
-
-const renderMenu = () => {
-  return (
-    <MenuContainer>
-      {menuOptions.map(({ id, label, href }) => {
-        return (
-          <Menu href={href} key={id}>
-            {label}
-          </Menu>
-        );
-      })}
-    </MenuContainer>
-  );
-};
+const ContainerRight = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
 
 const Header = () => {
   return (
     <Container>
-      <ContainerLeft>
-        <StyledIcon>Demo Auth</StyledIcon>
-      </ContainerLeft>
-      <ContainerRight>{renderMenu()}</ContainerRight>
+      <ContainerLeft>Demo Auth</ContainerLeft>
+      <ContainerRight>Logout</ContainerRight>
     </Container>
   );
 };
