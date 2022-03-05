@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import authService from "../auth/auth";
 
 const Container = styled.div`
   display: flex;
@@ -15,13 +16,16 @@ const ContainerLeft = styled.div`
 const ContainerRight = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const Header = () => {
   return (
     <Container>
       <ContainerLeft>Demo Auth</ContainerLeft>
-      <ContainerRight>Logout</ContainerRight>
+      <ContainerRight onClick={() => authService.endSession()}>
+        Logout
+      </ContainerRight>
     </Container>
   );
 };
