@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import authService from "../auth/auth";
 
@@ -20,12 +21,16 @@ const ContainerRight = styled.div`
 `;
 
 const Header = () => {
+  const history = useHistory();
+  const handleLogout = () => {
+    authService.endSession();
+    history.replace("/");
+  };
+
   return (
     <Container>
       <ContainerLeft>Demo Auth</ContainerLeft>
-      <ContainerRight onClick={() => authService.endSession()}>
-        Logout
-      </ContainerRight>
+      <ContainerRight onClick={handleLogout}>Logout</ContainerRight>
     </Container>
   );
 };
