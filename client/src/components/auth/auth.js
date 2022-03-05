@@ -16,10 +16,19 @@ function isLoggedIn() {
   return false;
 }
 
+function loggedUser() {
+  const userData = JSON.parse(localStorage.getItem("user"));
+  if (userData && userData["auth-token"] && userData["userId"]) {
+    return userData;
+  }
+  return {};
+}
+
 const authService = {
   startSession,
   endSession,
   isLoggedIn,
+  loggedUser,
 };
 
 export default authService;

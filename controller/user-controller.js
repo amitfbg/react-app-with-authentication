@@ -6,8 +6,8 @@ const User = require("../modal/user");
 
 //User Details fetching
 exports.userDetails = async (req, res) => {
-  // Checking if user already exits
-  const userExist = await User.findOne({ id: req.user.id });
+  // Checking if user already exits anf getting the user data
+  const userExist = await User.findOne({ _id: req.user.id });
   if (!userExist) return res.status(404).json({ msg: "Not found" });
 
   const { name, email, id } = userExist;
