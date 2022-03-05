@@ -14,6 +14,12 @@ const Container = styled.div`
   border: 1px solid gray;
   border-radius: 1rem;
   background-color: #fff;
+  @media (max-width: 767.98px) {
+    flex-direction: column;
+    justify-content: unset;
+    align-items: unset;
+    overflow-y: auto;
+  }
 `;
 const ContainerLeft = styled.div`
   height: 100%;
@@ -22,6 +28,9 @@ const ContainerLeft = styled.div`
   border-radius: 1rem 0 0 1rem;
   padding: 3rem 1.5rem;
   color: #ffffff;
+  @media (max-width: 767.98px) {
+    width: 100%;
+  }
 `;
 
 const TitleHead = styled.div`
@@ -41,9 +50,12 @@ const ContainerRight = styled.div`
   width: 50%;
   height: 100%;
   padding: 1rem;
+  @media (max-width: 767.98px) {
+    width: 100%;
+  }
 `;
 const Wrap = styled.div`
-  margin: 3rem 0 2rem;
+  margin: 1rem 0;
 `;
 const Icon = styled.div`
   font-size: 2rem;
@@ -51,7 +63,7 @@ const Icon = styled.div`
 `;
 
 const WrapRegister = styled.div`
-  margin: 2rem 0 2.5rem;
+  margin: 1rem 0;
   font-size: 2.5rem;
   font-weight: bold;
 `;

@@ -59,7 +59,7 @@ const InputContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  margin: 2rem 0 2rem 0;
+  margin: 1rem 0;
   width: 100%;
   display: flex;
   align-items: center;
