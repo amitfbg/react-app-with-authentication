@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import Loading from "../Loading/index";
@@ -102,6 +103,7 @@ const Register = styled.span`
 `;
 
 function Login({ handleClick }) {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [bannerMsg, setBannerMsg] = useState("");
@@ -119,9 +121,14 @@ function Login({ handleClick }) {
         authService.startSession(response.data);
         setEmail("");
         setPassword("");
+        history.push("/user");
       }
     } catch (error) {
-      setBannerMsg(error?.response?.data?.error);
+      setBannerMsg(
+        error?.response?.data?.error ||
+          error?.response?.data?.msg ||
+          "Please fill all the details..."
+      );
     } finally {
       setIsLoading(false);
     }

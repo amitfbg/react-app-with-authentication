@@ -38,7 +38,7 @@ exports.create = async (req, res) => {
   try {
     const savedUser = await newUser.save();
     res.status(201).json({
-      message: "User registered successfully.......",
+      msg: "User registered successfully.......",
       createdUser: {
         id: savedUser._id,
         name: savedUser.name,

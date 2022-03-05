@@ -116,14 +116,18 @@ function Register({ handleClick }) {
       };
       setIsLoading(true);
       const response = await axios.post("/register", dataToPost);
-      if (response.status === 200) {
-        setBannerMsg(response.data.msg);
+      if (response.status === 201) {
+        setBannerMsg(`${response.data.msg} \n Please login to continue...`);
         setName("");
         setEmail("");
         setPassword("");
       }
     } catch (error) {
-      setBannerMsg("Please fill all the details...");
+      setBannerMsg(
+        error?.response?.data?.error ||
+          error?.response?.data?.msg ||
+          "Please fill all the details..."
+      );
     } finally {
       setIsLoading(false);
     }
