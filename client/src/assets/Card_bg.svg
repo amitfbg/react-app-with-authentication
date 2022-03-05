@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="1440" height="800" preserveAspectRatio="none" viewBox="0 0 1440 800">
+    <g mask="url(&quot;#SvgjsMask2372&quot;)" fill="none">
+        <rect width="1440" height="800" x="0" y="0" fill="url(#SvgjsLinearGradient2373)"></rect>
+    </g>
+    <defs>
+        <mask id="SvgjsMask2372">
+            <rect width="1440" height="800" fill="#ffffff"></rect>
+        </mask>
+        <linearGradient x1="11.11%" y1="-20%" x2="88.89%" y2="120%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient2373">
+            <stop stop-color="rgba(14, 42, 71, 1)" offset="0"></stop>
+            <stop stop-color="rgba(76, 112, 255, 1)" offset="0"></stop>
+        </linearGradient>
+    </defs>
+</svg>
