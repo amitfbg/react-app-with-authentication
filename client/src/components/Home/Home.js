@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CardBg from "../../assets/Card_bg.svg";
 import Login from "../Login/Login";
+import Register from "../Register/Register";
 
 const Container = styled.div`
   margin: 1rem;
@@ -49,7 +50,19 @@ const Icon = styled.div`
   margin-bottom: 1rem;
 `;
 
+const WrapRegister = styled.div`
+  margin: 2rem 0 2.5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+`;
+
 function Home() {
+  const [currPage, setCurrPage] = useState("login");
+
+  const handleClick = () => {
+    setCurrPage((nextPage) => (nextPage === "login" ? "register" : "login"));
+  };
+
   return (
     <Container>
       <ContainerLeft>
@@ -62,12 +75,20 @@ function Home() {
         </SubTitleLeft>
       </ContainerLeft>
       <ContainerRight>
-        <Wrap>
-          <Icon>👋</Icon>
-          <TitleLeft>Welcome</TitleLeft>
-          <SubTitleLeft>Let's build.</SubTitleLeft>
-        </Wrap>
-        <Login />
+        {currPage === "login" ? (
+          <Wrap>
+            <Icon>👋</Icon>
+            <TitleLeft>Welcome</TitleLeft>
+            <SubTitleLeft>Let's build.</SubTitleLeft>
+          </Wrap>
+        ) : (
+          <WrapRegister>Register</WrapRegister>
+        )}
+        {currPage === "login" ? (
+          <Login handleClick={handleClick} />
+        ) : (
+          <Register handleClick={handleClick} />
+        )}
       </ContainerRight>
     </Container>
   );

@@ -90,7 +90,17 @@ const LoadingContainer = styled.div`
   position: relative;
 `;
 
-function Register() {
+const LinkForSignup = styled.div`
+  margin: 1rem 0;
+  text-align: center;
+`;
+
+const Login = styled.span`
+  border-bottom: 2px solid green;
+  cursor: pointer;
+`;
+
+function Register({ handleClick }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -165,6 +175,9 @@ function Register() {
           </LoadingContainer>
         )}
       </ButtonContainer>
+      <LinkForSignup>
+        Already have and account? <Login onClick={handleClick}>Login</Login>
+      </LinkForSignup>
     </MainContainer>
   );
 }
