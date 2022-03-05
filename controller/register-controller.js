@@ -40,9 +40,7 @@ exports.create = async (req, res) => {
     res.status(201).json({
       msg: "User registered successfully.......",
       createdUser: {
-        id: savedUser._id,
-        name: savedUser.name,
-        email: savedUser.email,
+        id: savedUser.id,
       },
     });
   } catch (err) {

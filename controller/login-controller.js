@@ -36,5 +36,5 @@ exports.userLogin = async (req, res) => {
 
   // Creating and sending token to user
   const token = jwt.sign({ id: userExist.id }, process.env.SECRET_TOKEN);
-  return res.status(200).json({ email: userExist.email, "auth-token": token });
+  return res.status(200).json({ userId: userExist.id, "auth-token": token });
 };
