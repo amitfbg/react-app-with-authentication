@@ -160,6 +160,7 @@ function Register({ handleClick }) {
             placeholder="Name"
             value={name}
             onChange={(e) => {
+              setBannerMsg("");
               setName(e.target.value);
             }}
           />
@@ -171,6 +172,7 @@ function Register({ handleClick }) {
             placeholder="Email"
             value={email}
             onChange={(e) => {
+              setBannerMsg("");
               setEmail(e.target.value);
             }}
           />
@@ -182,6 +184,7 @@ function Register({ handleClick }) {
             placeholder="Enter Password"
             value={password}
             onChange={(e) => {
+              setBannerMsg("");
               setPassword(e.target.value);
             }}
           />
